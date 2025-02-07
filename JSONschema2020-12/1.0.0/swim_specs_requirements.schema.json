@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/eurocontrol-swim/swim-specifications-reqs-json-schema/JSONschema2020-12/1.0.0/swim-specs-requirements.schema.json",
+  "title": "SWIM Specification Requirement Schema",
+  "description": "The root object representing the container of the requirements included in one of the Eurocontrol SWIM Specifications",
+  "type": "object",
+  "properties": {
+	"links": { 
+		"description": "A list of 'links' representing relationships with this resource as per RFC 8288 Web Linking standard (https://datatracker.ietf.org/doc/html/rfc8288)",
+		"type": "array", 
+		"items": { 
+			"type": "object",
+			"properties": { 
+				"rel": { 
+					"description": "Conveys the relation type of the link. For the purpose of this schema, only 2 relations are foreseen. One to represent a link to this schema for JSON Schema validation ('describedby') and one to represent a link to the relevant SWIM Specification document (pdf) or to the web page from which the SWIM Specification may be downloaded ('service-doc'). Relation type enum values are defined in the Link Relation Registry located at https://www.iana.org/assignments/link-relations/",
+					"type": "string",
+					"enum": ["describedby","service-doc"] 
+				},
+				"href": {
+					"description": "The link target",
+					"type": "string",
+					"format": "uri" 
+				},
+				"title": {
+					"description": "A label for the destination of the link",
+					"type": "string" 
+				},
+				"type": {
+					"description": "The media type of the link",
+					"type": "string", 
+					"enum": ["text/html", "text/pdf", "application/schema+json"] 
+				}
+			}, 
+			"required": ["rel", "href", "title", "type"] 
+		},
+		"minItems": 2 
+	},	
+    "metadata": {
+      "description": "The information allowing to identify the Specification where the requirements are defined",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "The title of the Specification",
+          "type": "string"
+        },
+        "publicationDate": {
+          "description": "The publication date of the Specification",
+          "type": "string",
+          "format": "date"
+        },
+        "edition": {
+          "description": "The edition number of the Specification",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "edition"
+      ]
+    },
+    "requirements": {
+      "description": "The listing of the requirements contained in the Specification",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/SDRequirement"
+          },
+          {
+            "$ref": "#/$defs/YPRequirement"
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "requirements"
+  ],
+  "$defs": {
+    "levelOfImplementation": {
+      "description": "The different levels of implementation as found in the Yellow Profile",
+      "type": "string",
+      "enum": [
+        "MANDATORY",
+        "MANDATORY_CONDITIONAL",
+        "RECOMMENDED",
+        "RECOMMENDED_CONDITIONAL",
+        "OPTIONAL",
+        "OPTIONAL_CONDITIONAL"
+      ]
+    },
+    "SDReqMeta": {
+      "description": "The set of meta-data applicable to requirements belonging to the SWIM Information Definition, Service Definition and/or Service Description Specification",
+      "type": "object",
+      "properties": {
+        "levelOfImplementation": {
+          "$ref": "#/$defs/levelOfImplementation"
+        },
+        "changesWrtPreviousEdition": {
+          "description": "If present, indicates which parts - or metadata - of the requirement have been changed with respect to the previous version of the specification",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "TITLE",
+              "IDENTIFIER",
+              "REQUIREMENT",
+              "RATIONALE",
+              "VERIFICATION",
+              "LEVEL_OF_IMPLEMENTATION",
+              "EXAMPLE_NOTES",
+              "NEW_REQUIREMENT"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "levelOfImplementation"
+      ],
+      "additionalProperties": false
+    },
+    "YPReqMeta": {
+      "description": "The set of meta-data applicable to requirements belonging to the Yellow Profile Specification",
+      "type": "object",
+      "properties": {
+        "reqType": {
+          "description": "The type of requirement as found in the Yellow Profile Specifications",
+          "type": "string",
+          "enum": [
+            "CONFORMANCE_REQUIREMENT",
+            "INTERFACE_BINDING",
+            "SECURITY",
+            "MESSAGING",
+			"MONITORING",
+            "RELIABILITY"
+          ]
+        },
+        "levelOfImplementation": {
+          "$ref": "#/$defs/levelOfImplementation"
+        },
+        "bindings": {
+          "description": "The list of bindings to which the req. belongs",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "WS_LIGHT",
+              "WS_LIGHT_WITH_MESSAGE_SECURITY",
+              "WS_SOAP",
+              "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+              "WS_SOAP_WITH_MESSAGE_SECURITY",
+              "WS_SOAP_WITH_FEDERATED_SECURITY",
+              "WSN_SOAP",
+              "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+              "WSN_SOAP_WITH_MESSAGE_SECURITY",
+              "WSN_SOAP_WITH_FEDERATED_SECURITY",
+              "AMQP_MESSAGING",
+              "AMQP_MESSAGING_WITH_MESSAGE_SECURITY",
+              "IPV4_UNICAST",
+              "IPV4_SECURE_UNICAST",
+              "IPV6_UNICAST",
+              "IPV6_SECURE_UNICAST"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "isDeprecated": {
+          "description": "Indicates if the requirement is deprecated",
+          "type": "boolean"
+        },
+        "changesWrtPreviousEdition": {
+          "description": "If present, indicates which parts - or metadata - of the requirement have been changed with respect to the previous version of the specification",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+			  "TITLE",
+              "IDENTIFIER",
+              "STATEMENT",
+              "CLARIFICATION",
+              "VERIFICATION",
+              "LEVEL_OF_IMPLEMENTATION",
+              "DEPRECATION",
+			  "BINDINGS",
+              "NEW_REQUIREMENT"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "required": [
+            "reqType",
+            "levelOfImplementation"
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "reqType": {
+                "const": "INTERFACE_BINDING"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bindings"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "changesWrtPreviousEdition": {
+                "contains": {
+                  "const": "NEW_REQUIREMENT"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "changesWrtPreviousEdition": {
+                "maxItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "YPRequirement": {
+      "description": "An object that includes meta-data and data of one requirement included in the SWIM YP Specification",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/$defs/YPReqMeta"
+        },
+        "identifier": {
+          "description": "The requirement identifier",
+          "type": "string"
+        },
+        "title": {
+          "description": "The requirement title",
+          "type": "string"
+        },
+        "statement": {
+          "description": "The requirement statement",
+          "type": "string"
+        },
+        "clarification": {
+          "description": "The requirement clarification",
+          "type": "string"
+        },
+        "verification": {
+          "description": "The list of verification methods associated to the requirement",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ANALYSIS",
+              "DOCUMENT_INSPECTION",
+              "CONFIGURATION_INSPECTION",
+              "DEMONSTRATION",
+              "TEST"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "identifier",
+        "title",
+        "statement",
+        "clarification",
+        "verification"
+      ]
+    },
+    "SDRequirement": {
+      "description": "An object that includes meta-data and data of one requirement. It is compatible with requirements included in the SWIM Information Definition, Service Definition and/or Service Description Specification",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/$defs/SDReqMeta"
+        },
+        "title": {
+          "description": "Title of the requirement, used as a short name for the requirement for mnemonic and readability purposes",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "Unique identifier of the requirement",
+          "type": "string"
+        },
+        "requirement": {
+          "description": "Statement expressing the requirement",
+          "type": "string"
+        },
+        "rationale": {
+          "description": "Justification of the existence of the requirement",
+          "type": "string"
+        },
+        "verification": {
+          "description": "Quality characteristics to be assessed when inspecting a service description with regards to the requirement",
+          "type": "object",
+          "properties": {
+            "completeness": {
+              "description": "the description of verification method to cover the completeness characteristic",
+              "type": "string"
+            },
+            "consistency": {
+              "description": "the description of verification method to cover the consistency characteristic",
+              "type": "string"
+            },
+            "correctness": {
+              "description": "the description of verification method to cover the correctness characteristic",
+              "type": "string"
+            }
+          },
+          "required": [
+            "completeness",
+            "consistency",
+            "correctness"
+          ]
+        },
+        "exampleNotes": {
+          "description": "Example and/or notes associated to the requirement",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "title",
+        "identifier",
+        "requirement",
+        "rationale",
+        "verification",
+        "exampleNotes"
+      ]
+    }
+  }
+}

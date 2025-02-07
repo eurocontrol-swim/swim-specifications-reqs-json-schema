@@ -11,7 +11,7 @@ Nevertheless, JSON data files are currently being produced only for SWIM Technic
 The JSON Schema is using JSON Schema draft 2020-12.
 The repository is organized in folders organized as follows:
 + JSONschema2020-12 (i.e. A folder indicating the JSON Schema draft version used)
---- + 1.0.0 (i.e. A folder indicating the version - according to Semantic Versioning 2.0 principles - of the JSON Schema. If the Schema will evolve during time, new folders will be created according to the version)
+  + 1.0.0 (i.e. A folder indicating the version - according to Semantic Versioning 2.0 principles - of the JSON Schema. If the Schema will evolve during time, new folders will be created according to the version)
 
 **Branching Strategy**
 

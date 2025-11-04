@@ -1,0 +1,1837 @@
+{
+  "metadata": {
+    "title": "EUROCONTROL Specification for SWIM Technical Infrastructure (TI) Yellow Profile",
+    "publicationDate": "2025-07-14",
+    "edition": "2.0"
+  },
+  "requirements": [
+    {
+      "metadata": {
+        "reqType": "CONFORMANCE_REQUIREMENT",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false
+      },
+      "title": "Conformance with Service Interface Bindings Specification",
+      "identifier": "SWIM-TIYP-0001",
+      "statement": "A SWIM TI YP implementation shall be conformant with at least one of the Service Interface Bindings included in the SWIM TI YP Specification.",
+      "clarification": "The SWIM TI YP specification standardises, from a TI perspective, different types of service interfaces to address different exchange needs. These are the Service Interface Binding specifications. This conformance statement mandates the implementation of at least one Service Interface Binding for an implementation of the SWIM TI YP to be conformant.",
+      "verification": [
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "CONFORMANCE_REQUIREMENT",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false
+      },
+      "title": "Conformance with Network Interface Bindings Specification",
+      "identifier": "SWIM-TIYP-0002",
+      "statement": "A SWIM TI YP implementation shall be conformant with at least one of the Network Interface Bindings included in the SWIM TI YP Specification.",
+      "clarification": "The SWIM TI YP uses a network to effectively exchange information with other systems. In order to ensure that the SWIM TI YP can interface with the network, it has to support at least one of the Network Interface Bindings included in the SWIM TI YP specification.",
+      "verification": [
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "CONFORMANCE_REQUIREMENT",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Conformance with Infrastructure Capabilities",
+      "identifier": "SWIM-TIYP-0003",
+      "statement": "A SWIM TI YP implementation shall conform to the Infrastructure Capabilities Specification.",
+      "clarification": "The Infrastructure Capabilities Specification is a sub-specification of the SWIM TI YP that specifies the minimum set of requirements, the recommended set of requirements and optional requirements for the implementation of infrastructure capabilities.\nPlease note that additional capabilities may be required depending on the specific service and situation. For a more comprehensive description of SWIM Technical Infrastructure and its Capabilities please refer to the SWIM TI Foundation Material:\nhttps://reference.swim.aero/technical-infrastructure/foundation.html.\n",
+      "verification": [
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV4_UNICAST",
+          "IPV4_SECURE_UNICAST",
+          "IPV6_UNICAST",
+          "IPV6_SECURE_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "TCP",
+      "identifier": "SWIM-TIYP-0004",
+      "statement": "The Service Interface Binding shall support IETF RFC 793 (Transmission Control Protocol).",
+      "clarification": "This requirement mandates the use of the Transmission Control Protocol.\n+ IETF RFC 793 (TCP): http://tools.ietf.org/html/rfc793  ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV4_SECURE_UNICAST",
+          "IPV6_SECURE_UNICAST"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "IPsec",
+      "identifier": "SWIM-TIYP-0005",
+      "statement": "The Network Interface Binding shall support IPsec according to IETF RFC 5406.",
+      "clarification": "This requirement mandates support of IPsec in accordance to IETF RFC 5406. IPsec admits certain variability and optionality in its use which needs to be properly selected and documented. \nIETF RFC 5406 provides considerations for these aspects and guidance towards documenting the existing optionality.\n+ IETF RFC 5406: https://www.ietf.org/rfc/rfc5406.txt\nThe IPsec protocol itself is defined in IETF RFC 4301.\n+ IETF RFC 4301: https://www.ietf.org/rfc/rfc4301.txt \nWhile different algorithms and configuration options are defined in IETF RFC 4302 to IETF RFC 4309.\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV4_SECURE_UNICAST",
+          "IPV4_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "IPv4",
+      "identifier": "SWIM-TIYP-0006",
+      "statement": "The Network Interface Binding shall support IETF RFC 791 (Internet Protocol v4).",
+      "clarification": "This requirement mandates the use of IETF RFC 791 (Internet Protocol v4).\n+ IETF RFC 791 (Internet Protocol v4): http://tools.ietf.org/html/rfc791  ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV6_SECURE_UNICAST",
+          "IPV6_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "IPv6",
+      "identifier": "SWIM-TIYP-0007",
+      "statement": "The Network Interface Binding shall support IETF RFC 2460 (Internet Protocol v6).",
+      "clarification": "This requirement mandates the use of IETF RFC 2460 (Internet Protocol v6).\n+ IETF RFC 2460 (Internet Protocol v6): http://tools.ietf.org/html/rfc2460  ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "TLS",
+      "identifier": "SWIM-TIYP-0008",
+      "statement": "The Service Interface Binding shall support the following versions of the Transport Layer Security Protocol (TLS):\n+ IETF RFC 8446 (TLS v1.3)\n\n+ IETF RFC 5246 (TLS v1.2) - deprecated\n",
+      "clarification": "TLS is a widespread protocol to secure communications at the transport layer.\n+ IETF RFC 8446 (TLS v1.3): https://tools.ietf.org/html/rfc8446\n+ IETF RFC 5246 (TLS v1.2): http://tools.ietf.org/html/rfc5246 - deprecated \nRelated NIST SP 800-53 rev5 Security Control: SC-8",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP",
+      "identifier": "SWIM-TIYP-0009",
+      "statement": "The Service Interface Binding shall support HTTP/1.1.",
+      "clarification": "This requirement specifies the use of the HTTP/1.1 protocol. HTTP/1.1 is defined across 6 IETF RFCs spanning from RFC 7230 to RFC 7235.\n+ IETF RFC 7230: http://tools.ietf.org/html/rfc7230\n+ IETF RFC 7231: http://tools.ietf.org/html/rfc7231\n+ IETF RFC 7232: http://tools.ietf.org/html/rfc7232\n+ IETF RFC 7233: http://tools.ietf.org/html/rfc7233\n+ IETF RFC 7234: http://tools.ietf.org/html/rfc7234\n+ IETF RFC 7235: http://tools.ietf.org/html/rfc7235",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP over TLS",
+      "identifier": "SWIM-TIYP-0010",
+      "statement": "The Service Interface Binding shall comply with IETF RFC 2818 (HTTP over TLS).",
+      "clarification": "This requirement mandates compliance with the interoperability standard for the use of HTTP over TLS (HTTPS).\n+ IETF RFC 2818 (HTTP over TLS): http://tools.ietf.org/html/rfc2818\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "SOAP 1.1",
+      "identifier": "SWIM-TIYP-0011",
+      "statement": "The Service Interface Binding shall support SOAP 1.1.",
+      "clarification": "Service Providers that use a Service Interface Binding relying on SOAP has to support version 1.1.\n+ Simple Object Access Protocol 1.1: http://www.w3.org/TR/2000/NOTE-SOAP-20000508/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "SOAP 1.2",
+      "identifier": "SWIM-TIYP-0012",
+      "statement": "The Service Interface Binding may support SOAP 1.2.",
+      "clarification": "Service Providers that use a Service Interface Binding that uses SOAP can optionally provide a SOAP 1.2 endpoint.\n+ SOAP 1.2 Part 1: http://www.w3.org/TR/soap12-part1/ \n+ SOAP 1.2 Part 2: http://www.w3.org/TR/2007/REC-soap12-part2-20070427/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "MTOM",
+      "identifier": "SWIM-TIYP-0013",
+      "statement": "The Service Interface Binding may support MTOM encoding.",
+      "clarification": "Service Providers that use an Interface Binding that contains the Simple Access Protocol are recommended to support the Message Transmission Optimization Mechanism.\n+ MTOM 1.0 Binding for SOAP 1.1: http://www.w3.org/Submission/soap11mtom10/ \n+ MTOM 1.0 Binding for SOAP 1.2: http://www.w3.org/TR/2005/REC-soap12-mtom-20050125/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WSDL 1.1",
+      "identifier": "SWIM-TIYP-0014",
+      "statement": "The Service Interface Binding shall support the Web Services Description Language version 1.1 (WSDL 1.1).",
+      "clarification": "This requirement specifies the mandatory support of the Web Service Description Language in its versions 1.1. WSDL can be used to specify in machine-processable service description of a Web Service.\n+ WSDL 1.1: http://www.w3.org/TR/wsdl\n+ WSDL 1.1 SOAP 1.2 Binding: https://www.w3.org/Submission/wsdl11soap12/\nRelated NIST SP 800-53 rev5 Security Control: SI-10.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WSDL 2.0",
+      "identifier": "SWIM-TIYP-0015",
+      "statement": "The Service Interface Binding may support the Web Services Description Language version 2.0 (WSDL 2.0).",
+      "clarification": "This requirement provides the option to support version 2.0 of the Web Service Description Language.\n+ WSDL 2.0 Part 1: http://www.w3.org/TR/wsdl20/\n+ WSDL 2.0 Part 2: http://www.w3.org/TR/2007/REC-wsdl20-adjuncts-20070626/\n+ WSDL 2.0 SOAP 1.1 Binding: http://www.w3.org/TR/wsdl20-soap11-binding/\nRelated NIST SP 800-53 rev5 Security Control: SI-10.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "WS-I",
+      "identifier": "SWIM-TIYP-0016",
+      "statement": "The Service Interface Binding shall support the following versions of the OASIS WS-I Basic Profile:\n+ OASIS WS-I Basic Profile Version 1.2 for SOAP 1.1 endpoint\n+ OASIS WS-I Basic Profile Version 2.0 if SOAP 1.2 endpoint is used.\n",
+      "clarification": "WS-I Basic Profile consists of a set of non-proprietary Web services specifications, along with clarifications, refinements, interpretations and amplifications of those specifications which promote interoperability. It also contains a set of executable test assertions for assessing the conformance to the profile.\n\nWS-I Basic Profile Version 1.2 targets SOAP 1.1 interoperability and WS-I Basic Profile Version 2.0 targets SOAP 1.2 interoperability. Every SOAP endpoint provided needs to comply with its respective WS-I Basic Profile version.\n\n+ OASIS WS-I Basic Profile Version 1.2: http://ws-i.org/Profiles/BasicProfile-1.2-2010-11-09.html\n+ OASIS WS-I Basic Profile Version 2.0: http://ws-i.org/Profiles/BasicProfile-2.0-2010-11-09.html ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS-I Security",
+      "identifier": "SWIM-TIYP-0017",
+      "statement": "The Service Interface Binding shall support the OASIS WS-I Basic Security Profile 1.1.",
+      "clarification": "To enable interoperability for SOAP Web Services using WS-Security it is required to satisfy the OASIS WS-I Basic Security Profile 1.1.\n+ OASIS WS-I Basic Security Profile 1.1: http://www.ws-i.org/Profiles/BasicSecurityProfile-1.1.html\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP"
+        ],
+        "isDeprecated": true,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "DEPRECATION"
+        ]
+      },
+      "title": "WS Notification",
+      "identifier": "SWIM-TIYP-0018",
+      "statement": "The Service Interface Binding shall support OASIS Web Services Notification 1.3.",
+      "clarification": "WS-Notification is a family of related specifications that define a standard Web services approach to notification using a topic-based publish/subscribe pattern.\n+ OASIS Web Services Base Notification 1.3: http://docs.oasis-open.org/wsn/wsn-ws_base_notification-1.3-spec-os.htm\n+ OASIS Web Services Brokered Notification 1.3: http://docs.oasis-open.org/wsn/wsn-ws_brokered_notification-1.3-spec-os.pdf\n+ OASIS Web Services Topics 1.3: http://docs.oasis-open.org/wsn/wsn-ws_topics-1.3-spec-os.pdf\nRelated NIST SP 800-53 rev5 Security Control: SI-10.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV6_SECURE_UNICAST",
+          "IPV6_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "IPv6 Node Requirements",
+      "identifier": "SWIM-TIYP-0019",
+      "statement": "The Network Interface Binding shall support IETF RFC 6434 (IPv6 Node Requirements).",
+      "clarification": "This requirement mandates the support of IETF RFC 6434 (IPv6 Node Requirements).\n+ IETF RFC 6434 (IPv6 Node Requirements): http://tools.ietf.org/html/rfc6434 ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV6_SECURE_UNICAST",
+          "IPV6_UNICAST",
+          "IPV4_SECURE_UNICAST",
+          "IPV4_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "RFC 1122",
+      "identifier": "SWIM-TIYP-0020",
+      "statement": "The Network Interface Binding shall support IETF RFC 1122 (Internet Standard, Requirements for Internet Hosts- Communication Layers).",
+      "clarification": "This requirement mandates the use of IETF RFC 1122 Internet Standard, Requirements for Internet Hosts - Communication Layers.\n+ IETF RFC 1122 Internet Standard, Requirements for Internet Hosts - Communication Layers: http://tools.ietf.org/html/rfc1122 ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "IPV4_SECURE_UNICAST",
+          "IPV4_UNICAST"
+        ],
+        "isDeprecated": false
+      },
+      "title": "RFC 950",
+      "identifier": "SWIM-TIYP-0022",
+      "statement": "The Network Interface Binding shall support IETF RFC 950 (Internet Standard Subnetting Procedure).",
+      "clarification": "This requirement mandates the use of IETF RFC 950 (Internet Standard Sub netting Procedure).\n+ IETF RFC 950 (Internet Standard Sub netting Procedure): http://tools.ietf.org/html/rfc950 ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "WS Policy",
+      "identifier": "SWIM-TIYP-0023",
+      "statement": "The Service Interface Binding may include general service policies expressed using W3C Web Service Policy 1.5.",
+      "clarification": "Web Service Policy allows expressing, using a formalised and machine-processable language, the capabilities and requirements of a Web Service. A Service Provider may choose to express the capabilities and requirements of a service using WS-Policy.\nWhere applicable, this requirement complements the use of specific WS-Policy extensions like WS-SecurityPolicy or WS-ReliableMessagingPolicy to provide general purpose service policies.\n+ W3C Web Service Policy 1.5 - Framework: https://www.w3.org/TR/2007/REC-ws-policy-20070904/\n+ W3C Web Services Policy 1.5 - Attachment: http://www.w3.org/TR/ws-policy-attach/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Secure Conversation",
+      "identifier": "SWIM-TIYP-0024",
+      "statement": "The Service Interface Binding shall support WS-SecureConversation 1.4.",
+      "clarification": "Establishment of a Security Session at message level through WS-SecureConversation helps reduce the performance overhead of message level security in case many messages are exchanged securely. Establishment of a Security Session at message level through WS-SecureConversation allows independence of equivalent transport level functionality.\n+ OASIS Standard WS-SecureConversation 1.4: http://docs.oasis-open.org/ws-sx/ws-secureconversation/v1.4/os/ws-secureconversation-1.4-spec-os.html\nRelated NIST SP 800-53 rev5 Security Control: SC-23.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Trust",
+      "identifier": "SWIM-TIYP-0025",
+      "statement": "The Service Interface Binding shall support WS-Trust 1.4.",
+      "clarification": "WS-Trust extends WS-Security providing a framework for requesting and issuing security tokens, and to broker trust relationships.\n+ OASIS WS-Trust 1.4: http://docs.oasis-open.org/ws-sx/ws-trust/v1.4/ws-trust.html\nRelated NIST SP 800-53 rev5 Security Control: IA-4 (6).",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY"
+        ],
+        "isDeprecated": false
+      },
+      "title": "WS Addressing",
+      "identifier": "SWIM-TIYP-0026",
+      "statement": "The Service Interface Binding shall support WS-Addressing 1.0.",
+      "clarification": "WS-Addressing provides transport-neutral mechanisms to address Web services and messages. WS-Addressing enables messaging systems to support message transmission through networks that include processing nodes such as endpoint managers, firewalls, and gateways in a transport-neutral manner.\n+ W3C Recommendation Web Services Addressing 1.0 - Core: https://www.w3.org/TR/2006/REC-ws-addr-core-20060509/\n+ W3C Recommendation Web Services Addressing 1.0 - SOAP Binding: https://www.w3.org/TR/ws-addr-soap/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "SOAP Message Security",
+      "identifier": "SWIM-TIYP-0027",
+      "statement": "The Service Interface Binding shall support OASIS Web Services Security SOAP Message Security 1.1.1.",
+      "clarification": "To enable interoperability for SOAP Web Services using WS-Security it is required to satisfy the OASIS Web Services Security SOAP Message Security 1.1.1. A Service Interface Binding supporting OASIS WS-Security has to provide and be able to process a policy description using WS-SecurityPolicy. The WS-SecurityPolicy document is recommended to be included as an attachment to the WSDL of the service, as this promotes reusability of the policy.\n+ OASIS Web Services Security: SOAP Message Security Version 1.1.1: http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html\n+ OASIS WS-SecurityPolicy 1.3: http://docs.oasis-open.org/ws-sx/ws-securitypolicy/v1.3/errata01/ws-securitypolicy-1.3-errata01-complete.html\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "XML Message Encryption",
+      "identifier": "SWIM-TIYP-0028",
+      "statement": "The Service Interface Binding shall support the W3C XML Encryption Syntax and Processing 1.1 if message encryption is needed.",
+      "clarification": "This requirement is applicable when message encryption is used, in such case the encryption and processing is done according to W3C XML Encryption Syntax and Processing 1.1.\n+ XML Encryption Syntax and Processing 1.1: https://www.w3.org/TR/xmlenc-core1/\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "XML",
+      "identifier": "SWIM-TIYP-0029",
+      "statement": "The Service Interface Binding shall support the Extensible Mark-up Language (XML) 1.0.",
+      "clarification": "This requirement specifies support for XML 1.0.\n+ Extensible Mark-up Language (XML) 1.0 (Fifth Edition): https://www.w3.org/TR/2008/REC-xml-20081126/ ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Security Username Token",
+      "identifier": "SWIM-TIYP-0030",
+      "statement": "The Service Interface Binding shall support the WS-Security Username Token Profile 1.1.",
+      "clarification": "This requirement specifies support for a username/password token to be used with WS-Security.\n+ OASIS Web Services Security Username Token Profile 1.1: https://www.oasis-open.org/committees/download.php/13392/wss-v1.1-spec-pr-UsernameTokenProfile-01.htm\nRelated NIST SP 800-53 rev5 Security Control: IA-2, IA-8, IA-9.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Security X509",
+      "identifier": "SWIM-TIYP-0031",
+      "statement": "The Service Interface Binding shall support one of the following versions of WS-Security X.509 Token Profile:\n+ WS-Security X.509 Token Profile 1.0\n+ WS-Security X.509 Token Profile 1.1.1\n",
+      "clarification": "This requirement specifies support for a X.509 certificate token to be used with WS-Security, both versions are supported. Service Providers are free to choose which version of the X.509 Token Profile to use and have to document it in their respective WS-SecurityPolicy.\n+ WS-Security X.509 Token Profile 1.0: http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0.pdf\n+ WS-Security X.509 Token Profile 1.1.1: http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-x509TokenProfile-v1.1.1-os.html\nRelated NIST SP 800-53 rev5 Security Control: IA-2, IA-8, IA-9, SC-17.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP Content Type Header",
+      "identifier": "SWIM-TIYP-0033",
+      "statement": "The Service Interface Binding shall use the HTTP Content-Type header to specify the Media Type of the payload if:\n+ The HTTP message contains a payload body and;\n+ The content-type is not statically defined in the interface definition.\n",
+      "clarification": "The HTTP/1.1 specification recommends the use of the content-type header when the message contains a payload body, this requirement constraints further this recommendation by requiring its use when the consumer does not know ahead of time the content-type of the payload received. This is the case when the content- type is subject to some content negotiation or when multiple types of payloads can be received through the same interface. The dynamic specification of the content-type promotes interoperability in these cases. When this is not the case implementers can fall back to HTTP/1.1 recommendations and best practices.\nPossible values include:\n+ IANA registered Media Types\n+ Protocol specific extensions\n+ Vendor proprietary extensions.\nIANA registered Media Types: http://www.iana.org/assignments/media-types/media-types.xhtml\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Federation",
+      "identifier": "SWIM-TIYP-0034",
+      "statement": "The SWIM-TI Interface shall support WS-Federation 1.2",
+      "clarification": "WS-Federation framework builds on WS-Security, WS-Trust, and the WS-* family of specifications to provide an extensible mechanism for federation, allowing authorized access to resources across different security realms.\n+ Web Services Federation Language (WS-Federation) Version 1.2: http://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html\nRelated NIST SP 800-53 rev5 Security Control: IA-4 (6).",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false
+      },
+      "title": "WS Reliable Messaging",
+      "identifier": "SWIM-TIYP-0035",
+      "statement": "The Service Interface Binding may support WS-ReliableMessaging 1.2.",
+      "clarification": "WS-ReliableMessaging allows reliable transfer of messages between nodes in the presence of software component, system, or network failures. The use of this WS specification is optional, a SWIM Service Provider has the freedom to utilize it for selected Service Interface Bindings. A Service Interface Binding supporting WS-ReliableMessaging has to provide and be able to process a policy description using WS-ReliableMessagingPolicy. The WS-ReliableMessagingPolicy document is recommended to be included as an attachment to the WSDL of the service, as this promotes reusability of the policy.\n+ OASIS Standard Web Services Reliable Messaging 1.2: https://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.2-spec-os.html\n+ WS-ReliableMessaging Policy 1.2: http://docs.oasis-open.org/ws-rx/wsrmp/200702/wsrmp-1.2-spec-os.html ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "BINDINGS"
+        ]
+      },
+      "title": "AMQP",
+      "identifier": "SWIM-TIYP-0036",
+      "statement": "The Service Interface Binding shall support the Advanced Message Queuing Protocol (AMQP) 1.0.",
+      "clarification": "The Advanced Message Queuing Protocol (AMQP) 1.0 is an open internet protocol for business messaging. It defines a binary wire-level protocol that allows for the reliable exchange of business messages between two parties.\n+ ISO/IEC 19464:2014 Information technology -- Advanced Message Queuing Protocol (AMQP) v1.0 specification: http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=64955 ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP Compression and Content Encoding Header",
+      "identifier": "SWIM-TIYP-0038",
+      "statement": "The Service Interface Binding shall use one of the following values of the HTTP header Content-Encoding if data compression is used:\n+ deflate\n+ gzip\n+ exi\n\n",
+      "clarification": "This requirement is applicable when data compression is used, in such case it restricts the possible compression algorithms and requires the use of the HTTP Content-Encoding header.\n\nHTTP compression performs on the fly compression. The compression can only be requested by the client. The server can ignore the request by the client and return non-compressed data if deemed appropriate.\n+ DEFLATE Compressed Data Format Specification version 1.3: https://www.ietf.org/rfc/rfc1951.txt  + GZIP File Format Specification 4.3: https://tools.ietf.org/html/rfc1952\n+ Efficient XML Interchange (EXI) Format 1.0: http://www.w3.org/TR/2014/REC-exi-20140211/\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "XML Digital Signature",
+      "identifier": "SWIM-TIYP-0040",
+      "statement": "The SWIM-TI shall digitally sign messages in accordance with W3C XML Signature Syntax and Processing (Second Edition).",
+      "clarification": "XML Signature Syntax and Processing provides the capability to sign XML messages, thus adding integrity and origin authentication at message level.\n+ XML Signature Syntax and Processing (Second Edition): http://www.w3.org/TR/xmldsig-core/\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "TLS Server Authentication",
+      "identifier": "SWIM-TIYP-0042",
+      "statement": "The Service Interface Binding shall support, at least, the following authentication mechanisms for TLS:\n\n+ Server authentication with X.509 certificate.",
+      "clarification": "TLS supports three authentication modes: mutual authentication, server authentication and total anonymity. This requirement specifies that, at a minimum, server authentication with X.509 certificates must be supported. Implementers are free to select the appropriate level and mechanism required for client authentication (e.g. anonymous client authentication, X.509 client authentication, Basic client authentication, Bearer client authentication...).\n+ IETF RFC 5280 (Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile): https://tools.ietf.org/html/rfc5280\n+ IETF RFC 5246 (The Transport Layer Security (TLS) Protocol Version 1.2): https://tools.ietf.org/html/rfc5246\nRelated NIST SP 800-53 rev5 Security Control: IA-9, SC-8, SC-17.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP Status Code Header",
+      "identifier": "SWIM-TIYP-0043",
+      "statement": "The Service Interface Binding shall be able to use the HTTP Status-Code header.\n",
+      "clarification": "This requirement specifies the need to use the Status-Code header of HTTP. The Status-Code rules and semantics are defined as part of the HTTP/1.1 specification.\n+ IETF RFC 7231 (HTTP/1.1): https://tools.ietf.org/html/rfc7231#section-6\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP",
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "HTTP Reason Phrase Header",
+      "identifier": "SWIM-TIYP-0044",
+      "statement": "The Service Interface Binding shall be able to use the HTTP Reason-Phrase header.",
+      "clarification": "This requirement specifies the need to use of the Reason-Phrase header of HTTP. The Reason-Phrase rules and semantics are defined as part of the HTTP/1.1 specification.\n+ IETF RFC 7230 (HTTP/1.1): https://tools.ietf.org/html/rfc7230\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WSN_SOAP",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY",
+          "WSN_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+          "WS_SOAP"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT"
+        ]
+      },
+      "title": "HTTP POST",
+      "identifier": "SWIM-TIYP-0045",
+      "statement": "The Service Interface Binding shall use the following HTTP methods:\n+ POST",
+      "clarification": "SOAP Web Services rely on HTTP's POST method.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WSN_SOAP_WITH_MESSAGE_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "SOAP Message Encryption",
+      "identifier": "SWIM-TIYP-0046",
+      "statement": "The SWIM-TI may encrypt any combination of body blocks, header blocks and any of these sub-structures of a SOAP message.",
+      "clarification": "Message level encryption is able to ensure end-to-end confidentiality of the exchanged messages. Message encryption results in an inherent overhead (processing time and payload size) which needs to be taken into account and conflated with the confidentiality benefits that it provides. This requirement enables a Service Provider to use (if desired) message encryption of SOAP messages for part or the complete message.\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WSN_SOAP_WITH_FEDERATED_SECURITY",
+          "WS_SOAP_WITH_FEDERATED_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "WS Security Token Profiles",
+      "identifier": "SWIM-TIYP-0047",
+      "statement": "The Service Interface Binding shall support one of the following Token Profiles:\n+ WS-Security X.509 Token Profile 1.0\n+ WS-Security X.509 Token Profile 1.1.1\n+ WS-Security SAML Token Profile 1.1.1\n",
+      "clarification": "This requirement specifies support for a X.509 certificate or SAML tokens to be used with WS-Security. Service Providers are free to select which Token Profile to use, it is worth noting that SAML Token Profile 1.1.1 allows for SAML 1.0 and SAML 2.0 tokens.\n+ WS-Security X.509 Token Profile 1.0: http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0.pdf\n+ WS-Security X.509 Token Profile 1.1.1: http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-x509TokenProfile-v1.1.1-os.html\n+ WS-Security SAML Token Profile 1.1.1: http://docs.oasis-open.org/wss-m/wss/v1.1.1/wss-SAMLTokenProfile-v1.1.1.html\nRelated NIST SP 800-53 rev5 Security Control: IA-2, IA-8, IA-9, SC-17.",
+      "verification": [
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "AMQP Content Type Header",
+      "identifier": "SWIM-TIYP-0048",
+      "statement": "The Service Interface Binding shall use the AMQP 1.0 content-type header to specify Media Type values if:\n+ The body is composed of data sections and;\n+ The content-type is not statically defined in the interface definition.",
+      "clarification": "The content-type is an optional property in the AMQP 1.0 specification, this requirement constraints further this optionality by requiring its use when the consumer does not know ahead of time the content-type of the payload received.\nThis is the case when the content-type is subject to some content negotiation or when multiple types of payloads can be received through the same interface. The dynamic specification of the content-type promotes interoperability in these cases.\n\nPossible values include:\n+ IANA registered Media Types\n+ Protocol specific extensions\n+ Vendor proprietary extensions.\nIANA registered Media Types: http://www.iana.org/assignments/media-types/media-types.xhtml\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "OPTIONAL",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "AMQP Content Encoding Header",
+      "identifier": "SWIM-TIYP-0049",
+      "statement": "The Service Interface Binding may use Media Type values in the AMQP 1.0 content-encoding header to specify additional content encodings applied to the body.",
+      "clarification": "This requirement specifies the possible use of the content-encoding header of AMQP 1.0 to detail additional encoding applied over the application-data section (e.g. compression). Possible values include:\n+ IANA registered Content Coding Media Types\n\nIANA registered Content Coding Media Types: https://www.iana.org/assignments/http-parameters/http-parameters.xml#content-coding\nRelated NIST SP 800-53 rev5 Security Control: CM-6.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "SASL",
+      "identifier": "SWIM-TIYP-0051",
+      "statement": "The Service Interface Binding shall support Simple Authentication and Security Layer (SASL).",
+      "clarification": "This requirement specifies the support of SASL authentication mechanism (RFC 4422) for the AMQP Service Binding. The framing of the SASL protocol inside AMQP 1.0 is defined in the AMQP 1.0 Specification (section 5).\n+ Simple Authentication and Security Layer (SASL): https://tools.ietf.org/html/rfc4422\nRelated NIST SP 800-53 rev5 Security Control: IA-2, IA-8, IA-9.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "AMQP_MESSAGING",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION",
+          "BINDINGS"
+        ]
+      },
+      "title": "AMQP over TLS",
+      "identifier": "SWIM-TIYP-0052",
+      "statement": "The Service Interface Binding shall use the AMQP over TLS (amqps) for transport security.",
+      "clarification": "This requirement mandates the establishment of a TLS session prior to the exchange of AMQP headers as defined in the AMQP 1.0 specification, section 5.2.1. This mechanism of establishing the transport secure layer is denominated amqps by IANA.\n+ ISO/IEC 19464:2014 Information technology -- Advanced Message Queuing Protocol (AMQP) v1.0 specification: http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=64955\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Common Time Reference",
+      "identifier": "SWIM-TIYP-0053",
+      "statement": "The SWIM-TI shall rely on a Common Time Reference (CTR) for time synchronisation.",
+      "clarification": "For the SWIM environment, each SWIM-TI function that uses time information must be synchronised to a time reference that satisfies precision requirements (e.g. a geographically close Stratum 2 or Stratum 1 time server).\nFor instance, security and identity tokens are checked for freshness in order to ensure that they are still within their valid lifetimes.\nRelated NIST SP 800-53 rev5 Security Control: SC-45 (1).",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Overload Protection",
+      "identifier": "SWIM-TIYP-0054",
+      "statement": "The SWIM-TI shall provide overload protection mechanisms for its provided services.",
+      "clarification": "This requirement mitigates the risk of exhausting available resources resulting in service unavailability.\nDue to the broad scope of uses applicable to the SWIM-TI Yellow Profile there is no single mechanism that can fit all implementations. Implementers are required to have some form of overload protection, the details of which are not specified to accommodate different use cases and needs.\nCommon examples of such protection mechanisms include:\n+ Request rate limitations on a per Service or Consumer basis\n+ Software firewalls\n+ Hardware solutions like routers and firewalls\n+ Replicas, load balancers and ingress controllers\n+ Content Delivery Networks\nSince the amount and types of protection mechanisms depends on the specific circumstances, it is expected that  correct  mechanisms are identified thanks to the result of a Risk Assessment. Several methodologies exist and may be adopted on this respect. Possible examples include NIST (SP 800-53A) and ISO standards (ISO/IEC 27001 series).\nRelated NIST SP 800-53 rev5 Security Control: SC-5.",
+      "verification": [
+        "TEST",
+        "ANALYSIS",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Least Privileged Principle Access",
+      "identifier": "SWIM-TIYP-0057",
+      "statement": "The SWIM-TI shall rely on the principle of least privilege to grant access to its resources.",
+      "clarification": "Least privilege principle ensures that users and processes operate using privilege levels not higher than those necessary for the proper execution of their tasks. The principle of least privilege provides a first layer of mitigation against potential attacks by preventing access to critical functionality to users and processes that do not strictly require it for their normal operation.\nRelated NIST SP 800-53 rev5 Security Control: AC-6, AU-9.",
+      "verification": [
+        "DEMONSTRATION",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Network Connection Termination",
+      "identifier": "SWIM-TIYP-0058",
+      "statement": "The SWIM-TI shall terminate network connections associated to a communication session:\n+ At the end of the session.",
+      "clarification": "Unneeded network connections are a potential source of security breaches, termination of such connections minimizes this risk.\nRelated NIST SP 800-53 rev5 Security Control: SC-10.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "RECOMMENDED",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION",
+          "LEVEL_OF_IMPLEMENTATION"
+        ]
+      },
+      "title": "Verification of Signed Messages Integrity",
+      "identifier": "SWIM-TIYP-0060",
+      "statement": "The SWIM-TI should verify, prior to any processing or data transformation, the integrity of messages when a message cryptographic signature is used.",
+      "clarification": "Cryptographic message signature is used to verify the integrity of a message. This requirement recommends that the integrity of a signed message is verified before performing any processing or transformation on the message that could alter its integrity.\nThe requirement is formulated as a recommendation (rather than a mandatory statement) to give the possibility to the receiver to skip integrity verification if its specific circumstances allow to do so (e.g. the receiver performed a risk assessment concluding that it is acceptable to consume/process potentially altered data). In normal circumstances, in fact, receivers are expected to perform verification.\nRelated NIST SP 800-53 rev5 Security Control: SC-8.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "RECOMMENDED",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Message Payload Validation",
+      "identifier": "SWIM-TIYP-0062",
+      "statement": "The SWIM-TI should validate messages against the applicable message definitions of its Service Interface Bindings.",
+      "clarification": "This requirement ensures information passed through the SWIM-TI is validated against the message definitions required in the Service Interface Bindings.\nE.g. Validation against XML Schemas, JSON Schema, IDL \nRelated NIST SP 800-53 rev5 Security Control: SI-10.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Validation of X.509 Certificates",
+      "identifier": "SWIM-TIYP-0064",
+      "statement": "The SWIM-TI shall validate X.509 certificates by:\n+ Constructing and verifying a trust path to an accepted trust anchor and;\n+ Verifying the certificate status information.",
+      "clarification": "The SWIM-TI relies on public key cryptographic certificates for several of its security capabilities. Validation of the X.509 certificates used by the SWIM-TI is required to ensure they can be trusted and their security properties are satisfied. SWIM-TI implementers must be able to construct a trust path from the X.509 certificate to an accepted trust anchor (e.g. trusted Certification Authority or trust store) and verify the certificate status information by checking for freshness (i.e. not expired) and verifying it has not been revoked.\nRelated NIST SP 800-53 rev5 Security Control: IA-5 (2), SC-17.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Cryptographic Algorithms",
+      "identifier": "SWIM-TIYP-0065",
+      "statement": "The SWIM-TI shall select cryptographic algorithms and key sizes in accordance with:\n+ Applicable national or international regulations on cryptographic algorithms and key sizes or;\n+ ECRYPT-CSA recommendations.",
+      "clarification": "Selection of secure cryptographic algorithms is necessary to ensure the security attributes of cryptographically protected data are not violated.\n\nWhen national or international regulations on the selection of cryptographic algorithms and key sizes are available and applicable to the SWIM-TI implementation, implementers can rely directly on said recommendations.\nIn the case said regulations are not available or applicable; implementers can rely on ECRYPT-CSA recommendations.\n\nRecommendations on cryptographic algorithms and key sizes ought to be updated frequently to avoid vulnerabilities. Implementers are advised to check for up-to-date recommendations.\n+ ECRYPT-CSA D5.4 Algorithms, Key Size and Protocols Report (2018).\nRelated NIST SP 800-53 rev5 Security Control: IA-5 c, SC-13.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Strong Passwords",
+      "identifier": "SWIM-TIYP-0066",
+      "statement": "The SWIM-TI shall enforce strong passwords selection when using username/password authentication for its consumer credentials.",
+      "clarification": "The SWIM-TI can be used with Service Bindings that support Username/Password authentication. This requirement ensures that service consumers use passwords with a minimum strength which helps prevent unauthorized access to the provided services.\n\nThe following are recommended practices that help ensure strong passwords are selected:\n+ Require a minimum length of 12 characters or an equivalent minimum entropy\n+ Allow a wide character space for the password (e.g. allow all printing ASCII characters)\n+ Check passwords against dictionary of known, common or weak passwords.\n\nThe following are recommendations to avoid in the password ruleset as they typically result in weaker selection of passwords:\n+ Enforce character set combination rules\n+ Routine password expiration\n+ Knowledge-Based Authentication or password hinting.\n\nReferences: NIST Special Publication 800-63B \"Digital Identity Guidelines, Authentication and Lifecycle Management\" - https://pages.nist.gov/800-63-3/sp800-63b.html\nRelated NIST SP 800-53 rev5 Security Control: IA-5(1).\n\nPlease note that these recommendations may evolve during time as the environment changes. Implementers are therefore advised to check for updates in reference (NIST Special Publication 800-63B) and/or other (more recent) best practice documents.",
+      "verification": [
+        "DEMONSTRATION",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Mandatory Access Control",
+      "identifier": "SWIM-TIYP-0067",
+      "statement": "The SWIM-TI shall enforce access control to all of its resources.",
+      "clarification": "The SWIM-TI Yellow Profile takes a proactive approach to access control where access control to any resource is enforced by default. This approach prevents unintended access to its resources.\nSeveral methods to enforce access control can be adopted. As an example, among others, implementers can consider Role Based Access Control (RBAC) or Attribute Based Access Control (ABAC). \nRole based access control enables to provide access to a particular resource (e.g. service) based on the roles associated to an identity. \nAttribute Based Access control is an access control paradigm where access to different resources is leveraged on the use of policies describing rules and conditions to access a resource based on its attributes. Implementers can rely on existing standards like XACML to benefit from a standardised and formal framework to establish their Attribute Based Access Control. Attribute Based Access Control generalises Role Based Access Control. \nOASIS extensible Access Control Mark-up Language 3.0: http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html\nThis requirement does not restrict in any way the existence of publicly accessible resources.\nRelated NIST SP 800-53 rev5 Security Control: AC-3 (3), AC-3 (7), AC-16.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Recording of Failed Authentication Requests",
+      "identifier": "SWIM-TIYP-0068",
+      "statement": "The SWIM-TI shall record failed authentication attempts.",
+      "clarification": "Failed authentications may indicate an ongoing authentication attack against some of the user credentials in the system. Such attempts need to be detected and recorded for monitoring and security purposes.\nRelated NIST SP 800-53 rev5 Security Control: AC-7 a, AU-2 a, SI-4a.2, SI-4b.",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Restriction after Failed Authentication Requests",
+      "identifier": "SWIM-TIYP-0069",
+      "statement": "The SWIM-TI shall restrict access to entities that surpass a configurable number of failed authentication attempts.",
+      "clarification": "Consecutive failed authentication attempts can be symptomatic of an ongoing attack to the system or its user s accounts; this requirement ensures that the SWIM-TI provides protection against these threats. Note that authentication attempts must be counted per user and not per session as, counting attempts per session, could allow malicious users to reset the counter, thereby circumventing the restriction. Access restriction can take different forms depending on the severity and security context (e.g. delays next login prompt, locks user account for certain period or until manual release, indefinite ban of user credentials...).\nRelated NIST SP 800-53 rev5 Security Control: AC-7.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY_CONDITIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Satisfactory Authorization",
+      "identifier": "SWIM-TIYP-0070",
+      "statement": "The SWIM-TI shall allow a requesting entity to consume a service if and only if its authorization is successful.",
+      "clarification": "This requirement ensures that the SWIM Technical Infrastructure allows service consumption when (and only when) the requesting entity is authorized to consume it.\nIt is assumed that access control to a public resource will not require an explicit authorization.\nRelated NIST SP 800-53 rev5 Security Control: AC-3.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Secure Password Storage",
+      "identifier": "SWIM-TIYP-0073",
+      "statement": "The SWIM-TI shall store passwords at rest in a form that is resistant to offline attacks.",
+      "clarification": "Password storage poses a risk in case of security breach, to mitigate this security risk passwords must be stored in a form that is resistant to offline attacks (e.g. brute forcing, dictionary attacks, rainbow tables...).\n\nStorage of consumer credentials does not require that the password is stored in a recoverable manner. In this case, passwords can be stored in a form that is resistant to offline attacks by storing them after salting and hashing them with an appropriate hash function or key-derivation function.\n\nWhen a password needs to be stored in a recoverable manner for later use (e.g. SWIM-TI s own credentials to be used for external services), encryption at rest provides a mechanism that is resistant to offline attacks provided strong algorithms and key sizes are selected.\n\nThe selection of cryptographic algorithms, key sizes, salt sizes and iteration rounds is subject to SWIM-TIYP-0065.\n+ NIST Special Publication 800-63B   Digital Identity Guidelines: https://pages.nist.gov/800-63-3/sp800-63b.html\nRelated NIST SP 800-53 rev5 Security Control: IA-5 g, IA-5 (1)d.",
+      "verification": [
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "RECOMMENDED",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Security Patching",
+      "identifier": "SWIM-TIYP-0074",
+      "statement": "The SWIM-TI should be the subject of a documented vulnerability patching process that mitigates known vulnerabilities within a predefined maximum timeframe.",
+      "clarification": "Service provision in a potentially hostile environment, such as the Internet, needs a regular update of software to apply security patches.\nThe longer a known vulnerability remains unpatched, the higher the risk of exploits.\nSecurity patching should be a documented activity that is performed with a well-defined maximum delay to minimize risks on the system. The criticality of the vulnerabilities and the complexity and criticality of the system should be factors to be considered. Security patches need to be tested prior to their application into operational systems for effectiveness and potential side effects.\nRelated NIST SP 800-53 rev5 Security Control: SI-2.",
+      "verification": [
+        "DOCUMENT_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "RECOMMENDED",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION",
+          "LEVEL_OF_IMPLEMENTATION"
+        ]
+      },
+      "title": "Vulnerability Assessment",
+      "identifier": "SWIM-TIYP-0075",
+      "statement": "The SWIM-TI should be the subject, at least yearly, of a documented vulnerability assessment which includes penetration tests.",
+      "clarification": "Service provision in a public environment needs to be protected against possible hostile attacks. A regular check of unprotected vulnerabilities helps mitigate said risk.\nThe vulnerability assessment can be performed through self-assessment or via a third party, verifiable evidence of the vulnerability assessment has to exist for consumers and regulators.\nThe choice of framework or methodology followed is in the remit of the implementer, a number of framework and methodologies are readily available (e.g. Penetration Testing Execution Standard, NIST SP 800-115, PCI DSS guidance ). Whenever possible also Static Application Security Testing (SAST) is recommended to be performed (several tools are available for this purpose) as it allows for an early detection of potential security issues well before an application is put in operation. This may be the case when the application is newly developed or when it is modified and its source code is available (e.g. it is the result of an internal development, its development has been commissioned to a software vendor ). In case COTS are used, SWIM Stakeholders are recommended to verify COTS developers performed SAST.\nSatisfaction of this requirement is achieved through proper documentation of the source code analysis (when applicable), vulnerability assessment and penetration testing scope and methodology followed.\nRelated NIST SP 800-53 rev5 Security Control: CA-8, RA-5, SA-11 (1).",
+      "verification": [
+        "DOCUMENT_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit Data Reporting",
+      "identifier": "SWIM-TIYP-0076",
+      "statement": "The SWIM-TI may provide the means to analyse and produce reports of the collected audit data.",
+      "clarification": "It is important to monitor any incidents that may have an impact on security, to that effect the SWIM-TI has to provide the means to access recorded audit events to analyse them and produce appropriate reporting.\nRelated NIST SP 800-53 rev5 Security Control: AU-7.",
+      "verification": [
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit of Identity Validity Events",
+      "identifier": "SWIM-TIYP-0077",
+      "statement": "The SWIM-TI may detect and record identities whose access has been restricted with the relevant context information.",
+      "clarification": "Entities which have their access restricted to a service have to be logged for future auditing. Any additional context information that may be relevant needs to be included.\nRelated NIST SP 800-53 rev5 Security Control: AU-2.",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Protection of Audit Information",
+      "identifier": "SWIM-TIYP-0079",
+      "statement": "The SWIM-TI may store audit data in non-volatile secure storage.",
+      "clarification": "Audit logs includes all information needed to successfully audit information system activity, therefore audit logs and audit tools need to be protected from unauthorized access, modification, and deletion.\nThis should be achieved applying both logical and physical protection of audit logs.\nLogical protection can be addressed by enforcing adequate access controls to audit logs, while physical protection is addressed by media protection controls and physical access control.\nAudit records will be stored persistently until it is determined that they are no longer needed for administrative, legal, audit, or other operational purposes.\nRelated NIST SP 800-53 rev5 Security Control: AU-9, AU-11.",
+      "verification": [
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit Data Remote Storage",
+      "identifier": "SWIM-TIYP-0080",
+      "statement": "The SWIM-TI may replicate audit data in a different system from the system generating the audit data.",
+      "clarification": "This requirement helps to ensure that a compromise of the system does not also result in a compromise of the corresponding audit records.\nRelated NIST SP 800-53 rev5 Security Control: AU-9 (2).",
+      "verification": [
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit Data Management Reporting",
+      "identifier": "SWIM-TIYP-0081",
+      "statement": "The SWIM-TI may provide an interface to manage audit reports.",
+      "clarification": "This requirement ensures that the SWIM-TI provides the functionality necessary to manage the report of auditable events. It is expected that some human interaction is needed for fulfilling these reports, the details of which are system specific and not specified by this requirement (e.g. review, analysis, annotation functionalities could be included as part of the audit interface).\nRelated NIST SP 800-53 rev5 Security Control: AU-7.",
+      "verification": [
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL_CONDITIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Safe Mode Operation",
+      "identifier": "SWIM-TIYP-0085",
+      "statement": "When certain adverse conditions are met, the SWIM-TI may use a safe, documented, mode of operation that prioritises mission critical functions.",
+      "clarification": "When mission critical and not critical services are supported by the TI, it is necessary that the TI is able to operate in a safe mode to prioritise mission critical functions during certain adverse conditions e.g. reduced communication bandwidth or limited computational resources.\nSuch safe mode of operation needs to be documented such as to identify the mission critical (e.g. services the provider believes to be essential to the consumer) and non-critical services and be able to tell them apart so that there can be a consequent allocation of resources during such adverse conditions.\nRelated NIST SP 800-53 rev5 Security Control: CP-12.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "CAVP approved Cryptographic Modules",
+      "identifier": "SWIM-TIYP-0087",
+      "statement": "The SWIM-TI may use cryptographic modules approved by the Cryptographic Algorithm Validation Program (CAVP).",
+      "clarification": "The National Institute of Standards and Technology (NIST) issued the FIPS 140 Publication Series to coordinate the requirements and standards for cryptographic modules including both hardware and software components. The FIPS 140 standard is subdivided into the Cryptographic Algorithm Validation Program (CAVP) and the Cryptographic Module Validation Program (CMVP). The CAVP ensures cryptographic algorithm implementations are tested for the correct implementation of the selected algorithms.\nSatisfaction of this requirement is achieved using cryptographic algorithm implementations approved by the Cryptographic Algorithm Validation Program (CAVP).\n\nCryptographic Algorithm Validation Program (CAVP): http://csrc.nist.gov/groups/STM/cavp/index.html\nList of validated cryptographic algorithms: http://csrc.nist.gov/groups/STM/cavp/validation.html\nRelated NIST SP 800-53 rev5 Security Control: SC-13.",
+      "verification": [
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit of Cryptographic Events",
+      "identifier": "SWIM-TIYP-0088",
+      "statement": "The SWIM-TI may detect and record uses of its cryptographic modules.",
+      "clarification": "The SWIM-TI makes use of cryptographic modules for secure exchange, local storage as well as cryptographic signature and verification. Detecting and recording these events is necessary for auditing purposes.\nRelated NIST SP 800-53 rev5 Security Control: AU-2.",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Configurable Authentication",
+      "identifier": "SWIM-TIYP-0089",
+      "statement": "The SWIM-TI may enforce different types of identity security tokens on a per service basis.",
+      "clarification": "Access control to services is enforced by the SWIM TI that authenticates requests. The SWIM TI has to be able to enforce the use of different identity security tokens on a per service basis according to their security needs.\nRelated NIST SP 800-53 rev5 Security Control: IA-4.",
+      "verification": [
+        "TEST",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL_CONDITIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Audit of federated identity events",
+      "identifier": "SWIM-TIYP-0090",
+      "statement": "When integrated with a federated identity management, the SWIM-TI may detect and record updates received from external identity management systems related to restricted identities.",
+      "clarification": "The SWIM-TI manages updates related to the validity of identities received from external identity management systems and these are relevant for protecting the system from unauthorized access.\nRelated NIST SP 800-53 rev5 Security Control: AU-2.",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "RECOMMENDED",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION",
+          "LEVEL_OF_IMPLEMENTATION"
+        ]
+      },
+      "title": "Denial of Service Protection",
+      "identifier": "SWIM-TIYP-0092",
+      "statement": "The SWIM-TI should provide defensive measures against Denial of Service attacks.",
+      "clarification": "A variety of solutions exist to reduce the effects of Denial of Service (both DoS and DDoS).\nExamples include:\n+ Boundary protection devices can filter certain types of packets to protect information system components on internal organizational networks from being directly affected by denial of service attacks.\n+ Increased capacity and bandwidth combined with service redundancy may also reduce the susceptibility to denial of service attacks.\n+ Content Delivery Networks.\nOther solution examples may be found (e.g.) on  OWASP Denial of Service Cheat Sheet web page.\nThe amount of solutions to be adopted depends, of course, on the availability requirements of the services that must be protected.\nRelated NIST SP 800-53 rev5 Security Control: SC-5.",
+      "verification": [
+        "TEST",
+        "ANALYSIS"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL_CONDITIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Identity Validity Information Exchange",
+      "identifier": "SWIM-TIYP-0093",
+      "statement": "When integrated with a federated identity management, the SWIM-TI may exchange information related to restricted identities.",
+      "clarification": "Maintaining up to date the identity information and its validity is important for ensuring a properly controlled access to resources. When the management of identities is federated and external to the SWIM-TI, it should get up to date information and contribute with any information concerning the validity of an identity in the SWIM-TI domain. (E.g. blocked identities due to suspicious behaviour, certificate revocation lists).\nRelated NIST SP 800-53 rev5 Security Control: IA-5(9).",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Hardware Tokens",
+      "identifier": "SWIM-TIYP-0096",
+      "statement": "The SWIM-TI may support the use of hardware security tokens for authentication.",
+      "clarification": "For most critical services (e.g. services exchanging classified data) it is necessary to have a stronger authentication mechanism, hardware security tokens add additional layers of protection as they require physical access to the authenticator.\nRelated NIST SP 800-53 rev5 Security Control: IA-5.",
+      "verification": [
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "MONITORING",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false
+      },
+      "title": "Hardware Monitoring",
+      "identifier": "SWIM-TIYP-0103",
+      "statement": "The SWIM-TI may monitor the state of its hardware resources:\n+ Processors\n+ Volatile and Non-Volatile memory\n+ Communication resources.",
+      "clarification": "The SWIM-TI relies on certain hardware resources to perform its operation.\nMonitoring of these resources ensures that their state is known and maintained up to date and that any eventual threshold violations on their use can be identified to be handled in an appropriate manner.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "MONITORING",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "STATEMENT",
+          "CLARIFICATION",
+          "LEVEL_OF_IMPLEMENTATION"
+        ]
+      },
+      "title": "Monitoring Alerts",
+      "identifier": "SWIM-TIYP-0104",
+      "statement": "The SWIM-TI shall raise an alert when a threshold violation occurs.",
+      "clarification": "Note that this also includes violations as described in SWIM-TIYP-0069.\nThreshold violations may require intervention from a supervisor or system administrators. This requirement ensures an alert mechanism is provided.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "MONITORING",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Service Monitoring",
+      "identifier": "SWIM-TIYP-0105",
+      "statement": "The SWIM-TI may monitor the state of the services it supports.",
+      "clarification": "The SWIM-TI is used for the provision of certain services. Monitoring of these services ensures that their state is known and maintained up to date and that any eventual threshold violations on their use can be identified to be handled in an appropriate manner.\nRelated NIST SP 800-53 rev5 Security Control: AU-2 a.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "MONITORING",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Persistent Storage Recording",
+      "identifier": "SWIM-TIYP-0106",
+      "statement": "The SWIM-TI may log in persistent storage threshold violations of the monitored resources and services.",
+      "clarification": "Collected logs can be used to provide reports, analyse system performance, analyse errors or investigate security incidents. Persistent storage is considered any kind of storage which is able to retain data after a power loss (e.g. Hard Drives, Solid State Drives, magnetic tapes...).\nRelated NIST SP 800-53 rev5 Security Control: AU-11.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "MONITORING",
+        "levelOfImplementation": "OPTIONAL",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "CLARIFICATION"
+        ]
+      },
+      "title": "Log Retention",
+      "identifier": "SWIM-TIYP-0107",
+      "statement": "The SWIM-TI may retain for a configurable number of days the collected logs.",
+      "clarification": "Collected logs can be used to provide reports, analyse system performance, analyse errors or investigate security incidents. This requirement specifies its retention for a non-specified number of days which can be configured to fit implementation needs.\nRelated NIST SP 800-53 rev5 Security Control: AU-11.",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "MANDATORY",
+        "bindings": [
+          "WS_LIGHT_WITH_MESSAGE_SECURITY",
+          "AMQP_MESSAGING_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "NEW_REQUIREMENT"
+        ]
+      },
+      "title": "S/MIME 4.0",
+      "identifier": "SWIM-TIYP-0112",
+      "statement": "The Service Interface Binding shall support S/MIME 4.0 for MIME types as defined in the IETF RFC 8551 (S/MIME 4.0) while considering the following constrains to allow an unambiguous detection of the presence of a S/MIME message:\n\n+ it shall ignore constraints for backward compatibility with prior versions of S/MIME and constraints related to 7-bit transfer encoding\n+ it shall include an HTTP application header (in case of usage in AMQP, an application property field of the message) with name  MIME-Version \n+ it shall include a Content-Type HTTP header (in case of usage in AMQP, the content-type core property of the message) where the outer MIME type of the S/MIME message shall be copied\n+ it shall not use the media type  application/octet-stream  as Content-Type\n+ it shall provide the entire S/MIME message, including all levels of nesting and wrapping, in a single data section\n",
+      "clarification": "The MIME standard provides a general structure for the content of Internet messages and defines how to create a MIME body part that has been cryptographically enhanced. \nThe mapping of S/MIME 4.0 onto HTTP and AMQP is targeted to promote/facilitate reuse of S/MIME libraries already existing and used in the context of Internet Mail. Typical Internet Mail constraints such as those linked with 7-bit transfer encoding are ignored as they are not applicable to the HTTP/AMQP context and introduce unnecessary complexity. Any constraints requiring backwards compatibility with prior S/MIME version are ignored as they can weaken the S/MIME 4.0 security and as they introduce unnecessary complexity.\n +  IETF RFC 8551 (S/MIME 4.0) https://www.ietf.org/rfc/rfc8551.txt \nRelated NIST SP 800-177 rev1 Trustworthy Email ",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "INTERFACE_BINDING",
+        "levelOfImplementation": "RECOMMENDED",
+        "bindings": [
+          "WS_LIGHT",
+          "WS_LIGHT_WITH_MESSAGE_SECURITY"
+        ],
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "NEW_REQUIREMENT"
+        ]
+      },
+      "title": "OpenAPI",
+      "identifier": "SWIM-TIYP-0113",
+      "statement": "The Service Interface Binding should support OpenAPI specification (at least) v3.1.\n",
+      "clarification": "This requirement recommends support of OpenAPI specification to formally describe HTTP service interfaces. \nOpenAPI allows to identify and understand service capabilities and, through its wide tool ecosystem, generate client code and create test cases. At the time of writing, OpenAPI v3.1 is the latest version available (published in 2021) which is widely supported and adopted. Service Providers are recommended to use at least this version of the Specification (therefore, at least v3.1   newer versions can also be supported). \n+ OpenAPI Specification v3.1: https://spec.openapis.org/oas/v3.1.0.html",
+      "verification": [
+        "TEST",
+        "DEMONSTRATION",
+        "CONFIGURATION_INSPECTION"
+      ]
+    },
+    {
+      "metadata": {
+        "reqType": "SECURITY",
+        "levelOfImplementation": "MANDATORY",
+        "isDeprecated": false,
+        "changesWrtPreviousEdition": [
+          "NEW_REQUIREMENT"
+        ]
+      },
+      "title": "Audit of Security Relevant Events",
+      "identifier": "SWIM-TIYP-0114",
+      "statement": "The SWIM-TI shall detect and record events that are significant and relevant to the security of systems.\n",
+      "clarification": "Detection and recording of security relevant events enable future auditing.\nRelevant events include: \n + access to services and resources\n + authentication requests\n + authorization requests. \nRelated NIST SP 800-53 rev5 Security Control: AU-2, AU-2a, SI-4a.2",
+      "verification": [
+        "DEMONSTRATION",
+        "TEST"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "service-doc",
+      "href": "https://www.eurocontrol.int/publication/eurocontrol-spec-170-eurocontrol-specification-swim-technical-infrastructure-ti-yellow",
+      "title": "EUROCONTROL Specification for SWIM Technical Infrastructure (TI) Yellow Profile",
+      "type": "text/html"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://raw.githubusercontent.com/eurocontrol-swim/swim-specifications-reqs-json-schema/refs/heads/main/JSONschema2020-12/1.0.0/swim_specs_requirements.schema.json",
+      "title": "JSON Schema Reference",
+      "type": "application/schema+json"
+    }
+  ]
+}
